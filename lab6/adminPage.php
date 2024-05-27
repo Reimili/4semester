@@ -18,12 +18,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/admin.css">
     <title>Страница администратора</title>
 </head>
 <body>
 
 <h1>Данные пользователей</h1>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -52,8 +53,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <h1>Статистика по языкам программирования</h1>
-    <table>
+    <br>
+    <table class="table">
         <thead>
             <tr>
                 <th>Язык программирования</th>
@@ -69,5 +70,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+        <br>
+    <a href="index.php">Вернуться на страницу входа</a>
 </body>
 </html>

@@ -25,6 +25,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/admin.css">
     <title>Данные пользователя</title>
 </head>
 <body>
@@ -37,6 +38,8 @@
         <label>Email:</label>
         <input type="email" name="email" value="<?= $user['email'] ?>">
         <button type="submit">Сохранить изменения</button>
+        <br>
+        <a href="adminPage.php">Вернуться к панеле админа</a>
     </form>
 </body>
 </html>

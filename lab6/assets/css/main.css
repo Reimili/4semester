@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman";
 }
 
 body {
@@ -9,10 +11,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #181924;
 }
 
 a {
-  color: #7c9ab7;
+  color: #6e7dc0;
   font-weight: bold;
   text-decoration: none;
 }
@@ -31,14 +34,14 @@ input {
   margin: 10px 0;
   padding: 10px;
   border: unset;
-  border-bottom: 2px solid #e3e3e3;
+  border-bottom: 2px solid #20212e;
   outline: none;
 }
 
 button {
   padding: 10px;
   border: unset;
-  background: #e3e3e3;
+  background: #20212e;
   cursor: pointer;
 }
 
