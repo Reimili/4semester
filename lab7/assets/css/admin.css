@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #181924;
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman";
+    font-size: 1rem;
+  }
+  
+  body {
+    margin:auto;
+  }
+  a {
+    color: #6e7dc0;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .table{
+    padding: 10px;
+    border-collapse:separate;
+    border-spacing: 10px;
+  }
