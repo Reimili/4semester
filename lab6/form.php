@@ -102,9 +102,9 @@ else
             </div>
             <div class="form-group">
                 <label class="form-label">Пол:</label>
-                <input type="radio" id="male" name="gender" <?php echo $radio1;?> value="male" class="form-radio"/> 
+                <input type="radio" id="male" name="gender" <?php if($radio1 == 1) echo 'checked'; ?> value="male" class="form-radio"/> 
                     <label for="male">Мужской</label>
-                <input type="radio" id="female" name="gender" <?php echo $radio2;?> value="female" class="form-radio"/>
+                <input type="radio" id="female" name="gender" <?php if($radio2 == 1) echo 'checked'; ?> value="female" class="form-radio"/>
                     <label for="female">Женский</label>
                 <?php echo isset($errors['gender']) ? $errors['gender'] : ''; ?>
             </div>

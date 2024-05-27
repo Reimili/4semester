@@ -7,8 +7,8 @@
             $login = $_POST['login'];
             $password = $_POST['password'];
 
-            $stmt = $db->prepare("SELECT * FROM Users WHERE username = ? AND password = ?");
-            $stmt->execute([$login, $password]);
+            $stmt = $db->prepare("SELECT * FROM Users WHERE username = ?");
+            $stmt->execute([$login]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['password'])) {
@@ -23,7 +23,7 @@
                     exit();
                 }
             } else {
-                echo "<p;'>", "Incorrect Password";
+                echo "<p>Incorrect Password</p>";
                 exit();
             }
         } elseif(isset($_POST['createAcc'])) {
