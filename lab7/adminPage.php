@@ -1,5 +1,25 @@
 <?php
+session_start();
     include 'db_pass.php';
+
+    if(empty($_SESSION['username']))
+    {
+        header("Location:index.php");
+        exit();
+    }
+
+    if(!empty($_SESSION['username']))
+    {
+        $username = $_SESSION['username'];
+        $stmt = $db->prepare("SELECT * FROM Users WHERE username = ? and admin = 1");
+        $stmt->execute([$username]);
+        $userAdmin = $stmt->fetch(PDO::FETCH_ASSOC);
+        if(empty($userAdmin))
+        {
+            header("Location:index.php");
+            exit();
+        }
+    }
 
     $stmt = $db->query("SELECT * FROM Users");
     

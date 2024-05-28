@@ -1,11 +1,24 @@
 <?php
     session_start();
     include 'db_pass.php';
+    $loginReq = "/^[a-zA-Z]+_[0-9]+$/";
+    $passReq = '/^[a-zA-Z0-9]+$/';
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['enterAcc'])) {
             $login = $_POST['login'];
+            if(!preg_match($loginReq,$login))
+            {
+                echo "Incorrect Username";
+                exit();
+            }
             $password = $_POST['password'];
+            if(!preg_match($passReq,$password))
+            {
+                echo "Incorrect Password";
+                exit();
+            }
+
 
             $stmt = $db->prepare("SELECT * FROM Users WHERE username = ?");
             $stmt->execute([$login]);

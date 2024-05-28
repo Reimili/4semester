@@ -1,6 +1,12 @@
 <?php
 include 'formhandler.php';
 
+if (!isset($_SESSION['csrf_token'])) 
+    {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    $token = $_SESSION['csrf_token'];
+
 
 $errors = isset($_COOKIE['errors']) ? json_decode($_COOKIE['errors'], true) : [];
 if(!empty($_SESSION['username']))
@@ -71,6 +77,7 @@ else
     <div class="form-container">
         <h2>Форма</h2>
         <form method="POST" id="myForm" action="formhandler.php">
+        <input type="hidden" name="token" value="<?= $token; ?>">
             <div class="form-group input-control">
                 <label for="fullname" class="form-label">ФИО:</label>
                 <input type="text" id="fullname" name="fullname" class="form-input"

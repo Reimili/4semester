@@ -28,6 +28,11 @@ $emailReg = "/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[
 $phoneReg = "/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(!empty($_SESSION['csrf_token']) and !empty($_POST['token']) and $_SESSION['csrf_token'] != $_POST["token"])
+        {
+            header("Location: index.php");
+            exit();
+        }
     $fullname = test_input($_POST['fullname']);
     $email = test_input($_POST['email']);
     $phone = test_input($_POST['phone']);
