@@ -1,27 +1,41 @@
 <?php
-
+    session_start();
     include 'db_pass.php';
-    try {
-        $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD,
-            [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    } catch (PDOException $e) {
-        echo 'Подключение не удалось: ' . $e->getMessage();
-        exit;
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
+    
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    {
+        if(isset($_POST['enterAcc'])) 
+        {
 
-        $stmt = $db->prepare("SELECT * FROM Users WHERE username = ?");
-        $stmt->execute([$login]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $login = $_POST['login'];
+            $password = $_POST['password'];
 
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['username'] = $login;
-            header("Location: form.php"); 
-            exit();
-        } else {
-            header("Location: index.php"); 
+            $stmt = $db->prepare("SELECT * FROM Users WHERE username = ?");
+            $stmt->execute([$login]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($password, $user['password'])) 
+            {
+                $_SESSION['username'] = $login;
+                unset($_COOKIE['errors']);
+                setcookie('errors', null, -1, '/');
+                header("Location: form.php"); 
+                exit();
+            } 
+            else 
+            {
+                echo "<p style='color:red;'>", "Неправильный логин или пароль!";
+                exit();
+            }
+        }
+        elseif (isset($_POST['createAcc'])) 
+        {
+            session_destroy();
+            unset($_COOKIE['username']);
+            setcookie('username', null, -1, '/');
+            header("Location: form.php");
             exit();
         }
     }
+?>

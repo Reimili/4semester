@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #181924;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman";
 }
 
 body {
@@ -12,7 +15,7 @@ body {
 }
 
 a {
-  color: #7c9ab7;
+  color: #6e7dc0;
   font-weight: bold;
   text-decoration: none;
 }
@@ -31,19 +34,19 @@ input {
   margin: 10px 0;
   padding: 10px;
   border: unset;
-  border-bottom: 2px solid #e3e3e3;
+  border-bottom: 2px solid #20212e;
   outline: none;
 }
 
 button {
   padding: 10px;
   border: unset;
-  background: #e3e3e3;
+  background: #20212e;
   cursor: pointer;
 }
 
 .msg {
-  border: 2px solid #ffa908;
+  border: 2px solid #ff0808;
   border-radius: 3px;
   padding: 10px;
   text-align: center;
